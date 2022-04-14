@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>查看所有产品</title>
+</head>
+<body>
+   <table border="1">
+       <tr>
+           <th>id</th>
+           <th>product_name</th>
+           <th>market_price</th>
+           <th>price</th>
+           <th>saler_id</th>
+           <th>sort</th>
+           <th>op</th>
+       </tr>    
+    {% for product in all_product %}
+       <tr>
+        <td>{{product.id}}</td>
+        <td>{{product.product_name}}</td>
+        <td>{{product.market_price}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.saler_id}}</td>
+        <td>{{product.sort}}</td>
+        <td>
+            <a href="/product/update_product/{{product.id}}">更新</a>
+            <a href="/product/delete_product?product_id={{product.id}}">删除</a>
+        </td>
+       </tr> 
+    {% endfor%}
+   </table> 
+</body>
+</html>
