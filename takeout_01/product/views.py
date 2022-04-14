@@ -1,19 +1,23 @@
-from itertools import product
-from math import prod
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
-from takeout_django_01.takeout_01.product.models import Product
+from .models import Product
 
 # Create your views here.
+
+def all_product(request):
+
+    all_product= Product.objects.filter(is_active=True)
+    return render(request,'product/all_product.html',locals())
 def update_product(request,product_id):
     try:
         product =  Product.objects.get(id=product_id,is_active=True);
     
     except Exception as e:
-        print('--update book error is %s'%(e))
-        return HttpResponse('--The book is not existed')
+        print('--update product error is %s'%(e))
+        return HttpResponse('--The product is not existed')
     if request.method == 'GET':
         pass
+        #暂时先这样
     elif request.method == 'POST':
         price = request.POST['price']
         print(price)

@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>产品信息更新</title>
+</head>
+<body>
+<table>
+
+    <form action="/product/update_product/{{ product.id }}" method="post">
+        <tr>
+            <td>
+               产品名: 
+            </td>
+            <td>
+                <input type="text" name="product_name" value="{{ product.product_name }}" disabled="disabled">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                分类：
+            </td>
+            <td>
+                <input type="text" name="sort" value="{{ product.sort}}" disabled="disabled">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                进价：
+            </td>
+            <td>
+                <input type="number" name="price" value="{{ product.price }}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                零售价：
+            </td>
+            <td>
+                <input type="number" name="market_price" value="{{ product.market_price }}">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="更新" style="width:180px;height:30px" />
+            </td>
+        </tr>
+
+    </form>
+</table>
+</body>
+</html>

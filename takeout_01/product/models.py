@@ -13,5 +13,5 @@ class Product(models.Model):
     class Meta:
         db_table = 'product'
     def __str__(self):
-        return 'name is %s price is %s market_price is %s'%(self.name,self.price,self.market_price)
+        return 'name is %s price is %s market_price is %s'%(self.product_name,self.price,self.market_price)
             
