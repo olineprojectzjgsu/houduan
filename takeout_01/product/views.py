@@ -1,13 +1,14 @@
 from django.shortcuts import render
-from django.http import HttpResponse,HttpResponseRedirect
-from .models import Product
+from django.http import HttpResponse,HttpResponseRedirect, JsonResponse
+from product.models import Product
 
 # Create your views here.
 
 def all_product(request):
-
-    all_product= Product.objects.filter(is_active=True)
-    return render(request,'product/all_product.html',locals())
+    if request.method == 'GET':
+        all_product= Product.objects.values()#产品的所有信息
+        product_json = list(all_product)#输出产品信息的json格式
+        return JsonResponse({'ret':0, 'retlist': product_json})
 def update_product(request,product_id):
     try:
         product =  Product.objects.get(id=product_id,is_active=True);
