@@ -1,6 +1,6 @@
 import json
 from django.shortcuts import render
-from django.http import HttpResponse,HttpResponseRedirect, JsonResponse
+from django.http import  JsonResponse
 from product.models import Product
 
 # Create your views here.
@@ -27,14 +27,17 @@ def add_product(request):
     if request.method == 'POST':
         request.params = json.loads(request.body)
         info = request.params['data']
-        new_product = Product.objects.create(product_name=info['product_name'],
-            price = info['price'],
-            market_price = info['market_price'],
-            saler_id = info['saler_id'],
-            sort = info['sort'],
-            describation = info['describation'],
-        )
-    return JsonResponse({'ret':0,'id':new_product.id})
+        print(info)
+        for i in info:
+            new_product = Product.objects.create(
+                product_name=i['product_name'],
+                price = i['price'],
+                market_price = i['market_price'],
+                saler_id = i['saler_id'],
+                sort = i['sort'],
+                describation = i['describation'],
+            )
+    return JsonResponse({"ret":0,"id":new_product.id})
 def delete_product(request):
     if request.method == 'DELETE':
         request.params = json.loads(request.body)
@@ -74,5 +77,20 @@ def update_product(request):
             select_product.sort = newdata['sort'] 
         if 'describation' in newdata:
             select_product.describation = newdata['describation'] 
+        select_product.save()
+        return JsonResponse({'ret':0})
+
+def recover_product(request):
+    if request.method == 'POST':
+        request.params = json.loads(request.body)
+        info = request.params['data']
+        try:
+            select_product = Product.objects.get(id=info['id'])
+        except Product.DoesNotExist:
+            return{
+                'ret':1,
+                'msg': "数据不存在"
+            }
+        select_product.is_active = True
         select_product.save()
         return JsonResponse({'ret':0})
