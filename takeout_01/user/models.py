@@ -7,11 +7,11 @@ class UserInfo(models.Model):
     user_name = models.CharField(max_length=32,default='')
     email = models.EmailField(max_length=32)
     pwd = models.CharField(max_length=32,default='')
-    phone = models.IntegerField(default=0)
+    phone = models.CharField(max_length=11,default='')
     nickname = models.CharField(max_length=20,default='')
 
     class Meta:
         db_table = 'userinfo'
 
     def __str__(self):
-        return 'user_name is %s email is %s phone is %f'%(self.user_name,self.email,self.phone)
+        return 'user_name is %s email is %s phone is %s'%(self.user_name,self.email,self.phone)
