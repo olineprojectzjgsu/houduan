@@ -5,6 +5,6 @@ from django.test import TestCase
 class Nytest(TestCase):
     
     def test_case(self):
-        UserInfo.objects.create(user_name="孙笑川",email="121@qq.com",pwd="123123",phone="1786733515",nickname="我是你哥哥")
+        UserInfo.objects.create(user_name="sunxiaochuan",email="1210797561@qq.com",pwd="123123",phone="1786733515",nickname="haohaho")
 
         
