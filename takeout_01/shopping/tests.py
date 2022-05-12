@@ -1,5 +1,4 @@
 from django.test import TestCase
-from django.test import TestCase
 from shopping.models import  GetAddress, Info_deliver, Shopping_cart, UserAddressInfo, Book_Info
 # Create your tests here.
 class Mytest(TestCase):
