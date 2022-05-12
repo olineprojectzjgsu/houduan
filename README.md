@@ -19,3 +19,30 @@ class Nytest(TestCase):
     def test_case(self):
         UserInfo.objects.create(user_name="sunxiaochuan",email="1210797561@qq.com",pwd="123123",phone="1786733515",nickname="haohaho")
 ```
+## 完成shopping和product部分的测试
+```
+Creating test database for alias 'default'...
+System check identified no issues (0 silenced).
+lizhi
+12.10
+31.21
+32
+fruit
+very good
+.zhejiang
+jinhua
+2022-05-12
+very bad
+10.32
+yongkang
+True
+huangmenjia
+jinhua
+12345678901
+.sunxiaochuan
+1210797561@qq.com
+123123
+##以上为测试用例
+```
+## 目前端口已全部测试完毕，均已调通
+详情请见apifox
