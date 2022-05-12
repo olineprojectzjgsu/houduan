@@ -53,7 +53,7 @@ requests==2.25.1
 SecretStorage==3.3.1
 service-identity==18.1.0
 six==1.16.0
-sos=0.23.0
+sos==0.23.0
 sqlparse==0.4.2
 ssh-import-id==5.11
 systemd-python==234
