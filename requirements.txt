@@ -6,3 +6,4 @@ Pillow==9.0.1
 simplejson==3.17.6
 sqlparse==0.4.2
 tzdata==2021.5
+PyMySQL==1.0.2
