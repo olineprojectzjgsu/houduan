@@ -13,10 +13,31 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        python-version: [3.9]
-
+        python-version: [3.7, 3.8, 3.9]
+    
     steps:
     - uses: actions/checkout@v3
+      
+    - name: Setup MySQL
+      uses: mirromutth/mysql-action@v1.1
+      with:
+        host port: 3306
+        # The port of container
+        container port: 3306
+        # --character-set-server - The character set of MySQL server
+        character set server: utf8mb4
+        # --collation-server - The character collation of MySQL server
+        collation server: utf8mb4_general_ci
+        # Version of MySQL to use
+        mysql version: 5.7
+        # MYSQL_ROOT_PASSWORD - root superuser password
+        mysql root password: 20010831 
+        # MYSQL_DATABASE - name for the default database that is created
+        mysql database: takeout_sql_1
+        # MYSQL_USER - create the specified user with superuser power for created database
+        mysql user: luyahu
+        # MYSQL_PASSWORD - specified superuser password which user is power for created database
+        mysql password: 20010831 
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
