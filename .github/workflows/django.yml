@@ -48,4 +48,4 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        python /takeout/manage.py test
+        python /takeout_01/manage.py test
