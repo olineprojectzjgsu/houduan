@@ -10,6 +10,9 @@ class Product(models.Model):
     saler_id = models.IntegerField("商家ID",default=1)
     sort = models.CharField("产品分类",max_length=50,default="")
     describation = models.TextField("描述",max_length = 288,default='')
+    category_id = models.IntegerField("目录id",default=1)
+    tags_id = models.IntegerField("标签id",default=1)
+    status = models.SmallIntegerField("状态",default=0)
     class Meta:
         db_table = 'product'
     def __str__(self):

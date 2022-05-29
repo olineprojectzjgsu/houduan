@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 
 # Create your models here.
@@ -6,6 +7,14 @@ class UserAddressInfo(models.Model):
     city = models.CharField("城市",max_length=50,default="杭州")
     address = models.CharField("地址",max_length=100,default="浙江工商大学")
     date = models.DateField(auto_now_add = True)
+    longtitude = models.CharField(max_length=20,default='10.11')
+    latitiude = models.CharField(max_length=20,default='10.11')
+    district = models.CharField(max_length=10,default="钱塘区")
+    street = models.CharField(max_length=20,default="白杨街道")
+    detail_addr = models.CharField(max_length=100,default='浙江工商大学下沙校区')
+    default_addr = models.SmallIntegerField(default=1)
+    status = models.SmallIntegerField(default=1)
+    add_time = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
 
 class Book_Info(models.Model):
