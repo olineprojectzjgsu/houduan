@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 
 # Create your models here.
@@ -9,7 +10,13 @@ class UserInfo(models.Model):
     pwd = models.CharField(max_length=32,default='')
     phone = models.CharField(max_length=11,default='')
     nickname = models.CharField(max_length=20,default='')
-
+    salt = models.CharField(max_length=20,default='')
+    user_photo = models.CharField(max_length=100,default='')
+    state = models.SmallIntegerField(default=1)
+    join_time = models.DateField(auto_now_add=True)
+    last_login = models.DateTimeField(auto_now=True)
+    tag = models.IntegerField(default=1)
+    token = models.CharField(max_length=50,default='')
     class Meta:
         db_table = 'userinfo'
 

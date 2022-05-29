@@ -27,6 +27,8 @@ def update_userinfo(request):
             select_user.phone = newdata['phone'] 
         if 'nickname' in newdata:
             select_user.nickname = newdata['nickname'] 
+        if 'user_photo' in newdata:
+            select_user.user_photo = newdata['user_photo']
         select_user.save()
     return JsonResponse({"ret":0})
 def add_userinfo(request):
@@ -40,11 +42,12 @@ def add_userinfo(request):
             pwd = info['pwd'],
             phone = info['phone'],
             nickname = info['nickname'],
+            user_photo = info['user_photo']
         )
     return JsonResponse({"ret":0,"id":new_user.id})
 
 def login_userinfo(request):
-    if request.method == 'GET':
+    if request.method == 'POST':
         request.params = json.loads(request.body)
         info = request.params['data']
         try:

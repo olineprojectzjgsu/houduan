@@ -11,11 +11,12 @@ def all_product(request):#查询产品，采用GET请求
         product_json = list(all_product)#输出产品信息的json格式
         return JsonResponse({'ret':0, 'data': product_json})
 def get_sure_product(request):#查询单一产品，采用GET请求
-    if request.method == 'GET':
+    if request.method == 'POST':
         request.params = json.loads(request.body)
         info = request.params['data']
         try:
             select_product= Product.objects.filter(id=info['id']).values()#产品的所有信息
+            print(select_product)
         except Product.DoesNotExist:
             return{
                 'ret':1,
@@ -40,7 +41,10 @@ def add_product(request):
     return JsonResponse({"ret":0,"id":new_product.id})
 def delete_product(request):
     if request.method == 'DELETE':
+        print(request.body)
+
         request.params = json.loads(request.body)
+        print(request.params)
         info = request.params['data']
         try:
             select_product = Product.objects.get(id=info['id'])
@@ -82,7 +86,9 @@ def update_product(request):
 
 def recover_product(request):
     if request.method == 'POST':
+        print(request.body)
         request.params = json.loads(request.body)
+        print(request.params)
         info = request.params['data']
         try:
             select_product = Product.objects.get(id=info['id'])
