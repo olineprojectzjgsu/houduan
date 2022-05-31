@@ -7,6 +7,19 @@ def all_useraddress(request):
         all_useraddress = UserAddressInfo.objects.values()
         UserAddressInfo_json = list(all_useraddress)
         return JsonResponse({"ret":0,"data": UserAddressInfo_json})
+def get_useraddress(request):
+    if request.method == "POST":
+        request.params = json.loads(request.body)
+        data = request.params["data"]
+        try:
+            select_useraddress = UserAddressInfo.objects.get(id = data['id'])
+        except UserAddressInfo.DoesNotExist:
+            return{
+                'ret':1,
+                'msg':'数据不存在'
+            }
+        useraddress_json = list(select_useraddress)
+        return JsonResponse({'ret':0,'data':useraddress_json})
 def update_useraddress(request):
     if request.method == 'PUT':
         request.params = json.loads(request.body)

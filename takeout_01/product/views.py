@@ -81,6 +81,8 @@ def update_product(request):
             select_product.sort = newdata['sort'] 
         if 'describation' in newdata:
             select_product.describation = newdata['describation'] 
+        if 'status' in newdata:
+            select_product.status = newdata['status']
         select_product.save()
         return JsonResponse({'ret':0})
 

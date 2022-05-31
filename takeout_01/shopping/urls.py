@@ -4,6 +4,7 @@ from . import views
 urlpatterns = [
     path('add_useraddress_info',views.add_useraddress_info),
     path('all_useraddress',views.all_useraddress),
+    path('get_sure_useraddress',views.get_useraddress),
     path('update_useraddress',views.update_useraddress),
     path('delete_useraddress',views.delete_useraddress),
     path('update_book_info',views.update_book_info),
