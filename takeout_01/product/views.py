@@ -8,7 +8,12 @@ from product.models import Product
 def all_product(request):#查询产品，采用GET请求
     if request.method == 'GET':
         all_product= Product.objects.values()#产品的所有信息
+        select_product = list
+        for i in range(5):
+            select_product.append(Product.objects.filter(id=i))
+            print(select_product.index(i))
         product_json = list(all_product)#输出产品信息的json格式
+        print(product_json)
         return JsonResponse({'ret':0, 'data': product_json})
 def get_sure_product(request):#查询单一产品，采用GET请求
     if request.method == 'POST':
