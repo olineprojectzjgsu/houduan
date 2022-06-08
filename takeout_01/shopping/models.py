@@ -1,9 +1,11 @@
 from email.policy import default
+from statistics import mode
 from django.db import models
 
 # Create your models here.
 class UserAddressInfo(models.Model):
     province = models.CharField("省份",max_length=50,default="浙江")
+    real_id = models.CharField("真实id",max_length=20,default="1")
     name = models.CharField("名字",max_length=20,default="胡路涯")
     city = models.CharField("城市",max_length=50,default="杭州")
     phone = models.CharField("手机号",max_length=20,default="17816733515")
@@ -21,6 +23,7 @@ class Book_Info(models.Model):
     shopname = models.CharField("店铺",max_length=100,default='蛋糕店')
     money = models.CharField("订单发价",max_length=50,default="441")
     date = models.DateField("发货时间",auto_now=True)
+    describations = models.CharField("评价",max_length=100,default="有点甜")
     is_active = models.BooleanField(default=True)
 
 class Shopping_cart(models.Model):

@@ -16,7 +16,7 @@ def get_useraddress(request):
         request.params = json.loads(request.body)
         data = request.params["data"]
         try:
-            select_useraddress = UserAddressInfo.objects.filter(id = data['id']).values()
+            select_useraddress = UserAddressInfo.objects.filter(real_id = data['id']).values()
         except UserAddressInfo.DoesNotExist:
             return{
                 'ret':1,
@@ -27,6 +27,7 @@ def get_useraddress(request):
         print(useraddress_json)
         
         return JsonResponse({'ret':0,'data':useraddress_json})
+        
 def update_useraddress(request):
     if request.method == 'PUT':
         request.params = json.loads(request.body)
@@ -93,12 +94,30 @@ def get_book_info(request):
         book_info = list(select_book)
         return JsonResponse({'ret':0,'data':book_info})
     return JsonResponse({"ret":0})
+def update_book_describation(request):
+    if request.method == 'POST':
+        request.params = json.loads(request.body)
+        info = request.params['data']
+        try:
+            select_book = Book_Info.objects.get(id = info['id'])
+            print(select_book.describations)
+            print(info['describations'])
+        except Book_Info.DoesNotExist:
+            return{
+                'ret':1,
+                'msg':"数据不存在"
+            }
+        if 'describations' in info:
+            select_book.describations = info['describations']
+        select_book.save()
+    return JsonResponse({"ret":0})
+
 def add_book_info(request):
     if request.method == 'POST':
         request.params = json.loads(request.body)
         info = request.params['data']
         new_book = Book_Info.objects.create(
-            _phone = info['username'],
+            _iphone = info['_phone'],
             shopname = info['shopname'],
             money = info['money']
         )
