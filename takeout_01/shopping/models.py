@@ -5,7 +5,7 @@ from django.db import models
 # Create your models here.
 class UserAddressInfo(models.Model):
     province = models.CharField("省份",max_length=50,default="浙江")
-    real_id = models.CharField("真实id",max_length=20,default="1")
+    real_id = models.CharField("真实id",max_length=20,default="2")
     name = models.CharField("名字",max_length=20,default="胡路涯")
     city = models.CharField("城市",max_length=50,default="杭州")
     phone = models.CharField("手机号",max_length=20,default="17816733515")
